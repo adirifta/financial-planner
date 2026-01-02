@@ -101,6 +101,7 @@ npm install -D prettier prettier-plugin-organize-imports prettier-plugin-tailwin
 ```
 
 Kemudian buat file '.prettierrc'
+
 ```bash
 {
     "tabWidth": 4,
@@ -117,6 +118,7 @@ Kemudian buat file '.prettierrc'
 ```
 
 Kemudian buat file untuk apa aja folder yang tidak boleh dengan file '.prettierignore'
+
 ```bash
 /bootstrap
 /vendor
@@ -125,27 +127,33 @@ Kemudian buat file untuk apa aja folder yang tidak boleh dengan file '.prettieri
 ```
 
 Tambahkan di package.json pada script
+
 ```bash
 "format": "prettier --write ."
 ```
 
 Terakhir coba
+
 ```bash
 npm run format
 ```
 
 ## Duster
+
 Digunakan untuk mengetahui code yang typo
+
 ```bash
 composer require tightenco/duster --dev
 ```
 
 Kemudian, untuk cek yang failed nya
+
 ```bash
 ./vendor/bin/duster lint
 ```
 
 Kemudian, untuk memperbaiki nya
+
 ```bash
 ./vendor/bin/duster fix
 ```
