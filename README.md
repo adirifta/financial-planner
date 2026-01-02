@@ -157,3 +157,11 @@ Kemudian, untuk memperbaiki nya
 ```bash
 ./vendor/bin/duster fix
 ```
+
+## Install library lodash di hooks
+
+Digunakan untuk fungsi utilitys untuk mempermudah manipulasi data seperti array, string dll
+
+```bash
+npm install lodash
+```
