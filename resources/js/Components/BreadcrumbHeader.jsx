@@ -1,11 +1,17 @@
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/Components/ui/breadcrumb";
-import { Fragment } from "react";
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+} from '@/Components/ui/breadcrumb';
+import { Fragment } from 'react';
 
-export default function BreadcrumbHeader({items}){
+export default function BreadcrumbHeader({ items }) {
     return (
         <Breadcrumb>
             <BreadcrumbList>
-                {items.map((item, index) =>
+                {items.map((item, index) => (
                     <Fragment key={index}>
                         <BreadcrumbItem>
                             {item.href ? (
@@ -14,10 +20,10 @@ export default function BreadcrumbHeader({items}){
                                 <BreadcrumbPage>{item.label}</BreadcrumbPage>
                             )}
                         </BreadcrumbItem>
-                        {index < items.length - 1 && <BreadcrumbSeparator/>}
+                        {index < items.length - 1 && <BreadcrumbSeparator />}
                     </Fragment>
-                )}
+                ))}
             </BreadcrumbList>
         </Breadcrumb>
-    )
+    );
 }
