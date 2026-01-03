@@ -1,3 +1,4 @@
+import { Link } from '@inertiajs/react';
 import { IconCash } from '@tabler/icons-react';
 
 export default function ApplicationLogo({ url = '#' }) {
