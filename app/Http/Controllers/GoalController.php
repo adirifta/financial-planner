@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Response;
 use Throwable;
@@ -64,7 +65,8 @@ class GoalController extends Controller implements HasMiddleware
                 'countGoalAchieved' => fn() => Goal::query()->where('user_id', Auth::id())->where('percentage', 100)->count(),
                 'countGoalNotAchieved' => fn() => Goal::query()->where('user_id', Auth::id())->where('percentage', '<', 100)->count(),
                 'countBalance' => fn() => Balance::query()->whereHas('goal', fn($query) => $query->where('user_id', Auth::id()))->sum('amount') + Goal::query()->where('user_id', Auth::id())->sum('beginning_balance')
-            ]
+            ],
+            'productivityCount' => fn() => $this->getProductivityCount(),
         ]);
     }
 
@@ -149,5 +151,38 @@ class GoalController extends Controller implements HasMiddleware
             flashMessage(MessageType::ERROR->message(error: $e->getMessage()), 'error');
             return to_route('goals.index');
         }
+    }
+
+    public function getProductivityCount(): array{
+        $startDate = Carbon::create(now()->year, 1, 1);
+        $endDate = Carbon::create(now()->year, 12, 31);
+
+        $balances = Balance::query()
+        ->where('user_id', Auth::id())
+        ->selectRaw('DATE(created_at) as transaction_date, count(*) as count')
+        ->whereBetween('created_at', [$startDate, $endDate])
+        ->groupBy('transaction_date')
+        ->orderBy('transaction_date')
+        ->get();
+
+        $dates = [];
+        $currentdate = $startDate;
+
+        while($currentdate <= $endDate){
+            $dates[] = $currentdate->format('Y-m-d');
+            $currentdate->addDay();
+        }
+
+        $result = [];
+
+        foreach($dates as $date){
+            $transaction = $balances->firstWhere('transaction_date', $date);
+            $result[] = [
+                'transaction_date' => $date,
+                'count' => $transaction ? $transaction->count : 0,
+            ];
+        }
+
+        return $result;
     }
 }
