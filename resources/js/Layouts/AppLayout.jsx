@@ -1,4 +1,4 @@
-import ThemeSwitcher from '@/components/Dark/ThemeSwitcher';
+import ThemeSwitcher from '@/components/dark/ThemeSwitcher';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Dialog, Transition } from '@headlessui/react';
 import { Head, Link, usePage } from '@inertiajs/react';

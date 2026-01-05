@@ -1,4 +1,4 @@
-import ThemeSwitcher from '@/components/Dark/ThemeSwitcher';
+import ThemeSwitcher from '@/components/dark/ThemeSwitcher';
 import { Head } from '@inertiajs/react';
 
 export default function GuestLayout({ children, title }) {
