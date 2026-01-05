@@ -1,68 +1,57 @@
-name: Deploy Laravel to cPanel
+name: Deploy
 
 on:
   push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
-    - name: Setup PHP
+      
+    - name: Setup PHP dan install dependencies
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.2'
         extensions: mbstring, pdo_mysql, xml, ctype, iconv, intl, gd
-        coverage: none
-
-    - name: Copy .env
-      run: |
-        cp .env.example .env
-        # Ganti dengan nilai production yang sebenarnya
-        sed -i 's/APP_ENV=local/APP_ENV=production/g' .env
-        sed -i 's/APP_DEBUG=true/APP_DEBUG=false/g' .env
-        sed -i 's/DB_DATABASE=laravel/DB_DATABASE=${{ secrets.DB_DATABASE }}/g' .env
-        sed -i 's/DB_USERNAME=root/DB_USERNAME=${{ secrets.DB_USERNAME }}/g' .env
-        sed -i 's/DB_PASSWORD=/DB_PASSWORD=${{ secrets.DB_PASSWORD }}/g' .env
-
+        
     - name: Install Composer dependencies
       run: |
         composer install --no-dev --optimize-autoloader --no-interaction
-
-    - name: Install Node.js
+        
+    - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '20'
         cache: 'npm'
-
-    - name: Install NPM dependencies
+        
+    - name: Install NPM dependencies and build
       run: |
         npm i
         npm run build
-
-    - name: Generate key and optimize
-      run: |
-        php artisan key:generate
-        php artisan config:cache
-        php artisan route:cache
-        php artisan view:cache
-
-    - name: Remove development files
+        
+    - name: Cleanup for deployment
       run: |
         rm -rf node_modules
         rm -rf tests
-        rm -rf .github
-        find . -name "*.md" -type f -delete
-        find . -name ".gitignore" -type f -delete
-        find . -name ".gitattributes" -type f -delete
-
-    - name: Deploy to cPanel via FTP
+        rm -rf vendor
+        find . -name "*.md" -type f -delete 2>/dev/null || true
+        find . -name ".git*" -type f -delete 2>/dev/null || true
+        find . -name "*.log" -type f -delete 2>/dev/null || true
+        
+        rm -f webpack.mix.js
+        rm -f vite.config.js
+        rm -f package-lock.json
+        rm -f yarn.lock
+        
+        # Buat placeholder vendor kosong
+        mkdir -p vendor
+        echo "# Run 'composer install --no-dev --optimize-autoloader' on server" > vendor/README.txt
+        
+    - name: Deploy code
       uses: SamKirkland/FTP-Deploy-Action@v4.0.0
       with:
         server: ${{ secrets.FTP_SERVER }}
@@ -70,12 +59,11 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         server-dir: ${{ secrets.SERVER_DIR }}
         exclude: |
-          **/.git*
-          **/.github*
-          **/.env*
-          **/node_modules/*
-          **/storage/*
-          **/tests/*
-          **/README.md
-          **/deploy.yml
-          **/vendor/*
+          .git/**
+          .github/**
+          node_modules/**
+          vendor/**
+          tests/**
+          storage/logs/**
+          .env*
+        log-level: verbose
