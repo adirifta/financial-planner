@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/Components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components-test/ui/card';
 import { cn } from '@/lib/utils';
 
 export default function CardStat({ data, children }) {

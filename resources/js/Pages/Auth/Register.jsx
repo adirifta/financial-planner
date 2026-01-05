@@ -1,9 +1,9 @@
-import ApplicationLogo from '@/Components/ApplicationLogo';
-import InputError from '@/Components/InputError';
-import { Button } from '@/Components/ui/button';
-import { Card, CardContent } from '@/Components/ui/card';
-import { Input } from '@/Components/ui/input';
-import { Label } from '@/Components/ui/label';
+import ApplicationLogo from '@/components-test/ApplicationLogo';
+import InputError from '@/components-test/InputError';
+import { Button } from '@/components-test/ui/button';
+import { Card, CardContent } from '@/components-test/ui/card';
+import { Input } from '@/components-test/ui/input';
+import { Label } from '@/components-test/ui/label';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Link, useForm } from '@inertiajs/react';
 

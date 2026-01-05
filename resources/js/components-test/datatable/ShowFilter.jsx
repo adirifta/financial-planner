@@ -1,5 +1,5 @@
-import { Badge } from '@/Components/ui/badge';
-import { Separator } from '@/Components/ui/separator';
+import { Badge } from '@/components-test/ui/badge';
+import { Separator } from '@/components-test/ui/separator';
 import { cn } from '@/lib/utils';
 import { IconFilter } from '@tabler/icons-react';
 

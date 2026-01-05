@@ -5,7 +5,7 @@ import {
     PaginationLink,
     PaginationNext,
     PaginationPrevious,
-} from '@/Components/ui/pagination';
+} from '@/components-test/ui/pagination';
 
 export default function PaginationTable({ meta, links }) {
     return (
