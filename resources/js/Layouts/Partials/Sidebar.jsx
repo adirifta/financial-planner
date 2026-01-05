@@ -35,7 +35,7 @@ export default function Sidebar({ auth, url }) {
             </Card>
             <ul role="list" className="flex flex-1 flex-col gap-y-2">
                 <div className="px-3 py-2 text-sm font-medium text-muted-foreground">General</div>
-                <NavLink url="#" active={url.startsWith('/dashboard')} title="Dashboard" icon={IconBox} />
+                <NavLink url={route('dashboard')} active={url.startsWith('/dashboard')} title="Dashboard" icon={IconBox} />
 
                 <div className="px-3 py-2 text-sm font-medium text-muted-foreground">Master</div>
                 <NavLink
