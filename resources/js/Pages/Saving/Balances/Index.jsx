@@ -15,7 +15,15 @@ import { UseFilter } from '@/Hooks/UseFilter';
 import AppLayout from '@/Layouts/AppLayout';
 import { deleteAction, formatDateIndo, formatToRupiah } from '@/lib/utils';
 import { Link } from '@inertiajs/react';
-import { IconArrowsDownUp, IconCash, IconMoneybag, IconPlus, IconReportMoney, IconTimeline, IconTrash } from '@tabler/icons-react';
+import {
+    IconArrowsDownUp,
+    IconCash,
+    IconMoneybag,
+    IconPlus,
+    IconReportMoney,
+    IconTimeline,
+    IconTrash,
+} from '@tabler/icons-react';
 import { useState } from 'react';
 
 export default function Index(props) {
@@ -68,7 +76,9 @@ export default function Index(props) {
                         iconClassName: 'text-white',
                     }}
                 >
-                    <div className="text-2xl font-bold">{formatToRupiah(props.goal.balances_sum_amount) + Number(props.goal.beginning_balance)}</div>
+                    <div className="text-2xl font-bold">
+                        {formatToRupiah(props.goal.balances_sum_amount) + Number(props.goal.beginning_balance)}
+                    </div>
                 </CardStat>
                 <CardStat
                     data={{
@@ -78,12 +88,15 @@ export default function Index(props) {
                         iconClassName: 'text-white',
                     }}
                 >
-                    <div className="text-2xl font-bold">{formatToRupiah(
-                        Math.max(
-                            0,
-                            Number(props.goal.nominal) - (Number(props.goal.balances_sum_amount) + Number(props.goal.beginning_balance))
-                        )
-                    )}</div>
+                    <div className="text-2xl font-bold">
+                        {formatToRupiah(
+                            Math.max(
+                                0,
+                                Number(props.goal.nominal) -
+                                    (Number(props.goal.balances_sum_amount) + Number(props.goal.beginning_balance)),
+                            ),
+                        )}
+                    </div>
                 </CardStat>
             </div>
 
@@ -93,8 +106,8 @@ export default function Index(props) {
                 </AlertTitle>
                 <AlertDescription>
                     {props.goal.balances_sum_amount >= props.goal.monthly_saving
-                    ? "Anda sudah berhasil mencapai target tabungan bulan ini"
-                    : "Anda belum berhasil mencapai target tabungan bulan ini"}
+                        ? 'Anda sudah berhasil mencapai target tabungan bulan ini'
+                        : 'Anda belum berhasil mencapai target tabungan bulan ini'}
                 </AlertDescription>
             </Alert>
 

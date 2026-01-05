@@ -1,44 +1,48 @@
-import { Button } from "@/Components/ui/button";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/Components/ui/tooltip";
-import { cn, formatDateIndo } from "@/lib/utils";
+import { Button } from '@/Components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/Components/ui/tooltip';
+import { cn, formatDateIndo } from '@/lib/utils';
 
-export default function Productivity({transactions}){
+export default function Productivity({ transactions }) {
     const columns = [];
     let currentColumn = [];
 
-    const backgroundProductivity = (count) =>{
-        if(count > 25) return 'bg-emerald-400';
-        if(count > 10) return 'bg-emerald-500';
-        if(count > 3) return 'bg-emerald-600';
-        if(count > 0) return 'bg-emerald-700';
+    const backgroundProductivity = (count) => {
+        if (count > 25) return 'bg-emerald-400';
+        if (count > 10) return 'bg-emerald-500';
+        if (count > 3) return 'bg-emerald-600';
+        if (count > 0) return 'bg-emerald-700';
 
         return 'bg-background';
-    }
+    };
 
     transactions.forEach((item, index) => {
         currentColumn.push(
             <TooltipProvider key={index}>
                 <Tooltip>
                     <TooltipTrigger asChild>
-                        <Button className={cn('w-6 h-6 rounded-full shadow-none border border-input',
-                            backgroundProductivity(item.count))} size='sm'
+                        <Button
+                            className={cn(
+                                'h-6 w-6 rounded-full border border-input shadow-none',
+                                backgroundProductivity(item.count),
+                            )}
+                            size="sm"
                         />
                     </TooltipTrigger>
                     <TooltipContent>
                         {item.count} kontribusi menabung pada {formatDateIndo(item.transaction_date)}
                     </TooltipContent>
                 </Tooltip>
-            </TooltipProvider>
+            </TooltipProvider>,
         );
 
-        if(currentColumn.length === 10){
+        if (currentColumn.length === 10) {
             columns.push(currentColumn);
             currentColumn = [];
         }
     });
 
-    if(currentColumn.length > 0){
-        columns.push(currentColumn)
+    if (currentColumn.length > 0) {
+        columns.push(currentColumn);
     }
 
     return (
@@ -49,5 +53,5 @@ export default function Productivity({transactions}){
                 </div>
             ))}
         </div>
-    )
+    );
 }

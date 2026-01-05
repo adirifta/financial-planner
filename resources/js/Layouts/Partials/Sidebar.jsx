@@ -39,7 +39,7 @@ export default function Sidebar({ auth, url }) {
 
                 <div className="px-3 py-2 text-sm font-medium text-muted-foreground">Master</div>
                 <NavLink
-                    url="#"
+                    url={route('payments.index')}
                     active={url.startsWith('/payments')}
                     title="Metode Pembayaran"
                     icon={IconCreditCardPay}

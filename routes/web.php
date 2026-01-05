@@ -3,6 +3,7 @@
 use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GoalController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,15 @@ Route::middleware('auth')->group(function () {
     Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::controller(PaymentController::class)->group(function(){
+    Route::get('payments', 'index')->name('payments.index');
+    Route::get('payments/create', 'create')->name('payments.create');
+    Route::post('payments/create', 'store')->name('payments.store');
+    Route::get('payments/{payment}/edit', 'edit')->name('payments.edit');
+    Route::put('payments/{payment}/edit', 'update')->name('payments.update');
+    Route::delete('payments/{payment}/destroy', 'destroy')->name('payments.destroy');
 });
 
 Route::controller(GoalController::class)->group(function(){
