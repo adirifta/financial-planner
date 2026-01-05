@@ -1,9 +1,9 @@
 import AlertAction from '@/components/AlertAction';
 import BreadcrumbHeader from '@/components/BreadcrumbHeader';
 import CardStat from '@/components/CardStat';
-import Filter from '@/components/Datatable/Filter';
-import PaginationTable from '@/components/Datatable/PaginationTable';
-import ShowFilter from '@/components/Datatable/ShowFilter';
+import Filter from '@/components/datatable/Filter';
+import PaginationTable from '@/components/datatable/PaginationTable';
+import ShowFilter from '@/components/datatable/ShowFilter';
 import EmptyState from '@/components/EmptyState';
 import HeaderTitle from '@/components/HeaderTitle';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
