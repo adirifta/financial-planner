@@ -5,7 +5,7 @@ import {
     BreadcrumbList,
     BreadcrumbPage,
     BreadcrumbSeparator,
-} from '@/components-test/ui/breadcrumb';
+} from '@/components/ui/breadcrumb';
 import { Fragment } from 'react';
 
 export default function BreadcrumbHeader({ items }) {

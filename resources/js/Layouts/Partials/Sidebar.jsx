@@ -1,7 +1,7 @@
-import ApplicationLogo from '@/components-test/ApplicationLogo';
-import NavLink from '@/components-test/NavLink';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components-test/ui/avatar';
-import { Card, CardContent } from '@/components-test/ui/card';
+import ApplicationLogo from '@/components/ApplicationLogo';
+import NavLink from '@/components/NavLink';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Card, CardContent } from '@/components/ui/card';
 import {
     IconBox,
     IconCalendarEvent,

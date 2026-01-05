@@ -1,6 +1,6 @@
-import { Button } from '@/components-test/ui/button';
-import { Input } from '@/components-test/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components-test/ui/select';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { IconRefresh } from '@tabler/icons-react';
 
 export default function Filter({ params, setParams, state, children }) {

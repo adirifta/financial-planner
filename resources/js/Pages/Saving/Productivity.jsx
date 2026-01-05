@@ -1,5 +1,5 @@
-import { Button } from '@/components-test/ui/button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components-test/ui/tooltip';
+import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn, formatDateIndo } from '@/lib/utils';
 
 export default function Productivity({ transactions }) {

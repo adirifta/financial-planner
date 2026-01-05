@@ -1,6 +1,6 @@
-import ApplicationLogo from '@/components-test/ApplicationLogo';
-import { Button } from '@/components-test/ui/button';
-import { Card, CardContent } from '@/components-test/ui/card';
+import ApplicationLogo from '@/components/ApplicationLogo';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { messages } from '@/lib/utils';
 import { Link } from '@inertiajs/react';

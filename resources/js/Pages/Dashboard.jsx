@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components-test/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -6,7 +6,7 @@ import {
     BreadcrumbList,
     BreadcrumbPage,
     BreadcrumbSeparator,
-} from '@/components-test/ui/breadcrumb';
+} from '@/components/ui/breadcrumb';
 import AppLayout from '@/Layouts/AppLayout';
 import { usePage } from '@inertiajs/react';
 

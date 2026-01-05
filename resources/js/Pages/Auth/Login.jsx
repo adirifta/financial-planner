@@ -1,10 +1,10 @@
-import ApplicationLogo from '@/components-test/ApplicationLogo';
-import InputError from '@/components-test/InputError';
-import { Alert, AlertDescription } from '@/components-test/ui/alert';
-import { Button } from '@/components-test/ui/button';
-import { Card, CardContent } from '@/components-test/ui/card';
-import { Input } from '@/components-test/ui/input';
-import { Label } from '@/components-test/ui/label';
+import ApplicationLogo from '@/components/ApplicationLogo';
+import InputError from '@/components/InputError';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Link, useForm } from '@inertiajs/react';
 
